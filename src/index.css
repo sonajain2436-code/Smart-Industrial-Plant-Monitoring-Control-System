@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased select-none;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.05);
+}
+.dark ::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.4);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.4);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.6);
+}
+
+/* Pipe Liquid Flow Animation */
+@keyframes dash {
+  to {
+    stroke-dashoffset: -40;
+  }
+}
+
+.pipe-flow-active {
+  stroke-dasharray: 8, 6;
+  animation: dash 1s linear infinite;
+}
+
+.pipe-flow-fast {
+  stroke-dasharray: 8, 6;
+  animation: dash 0.5s linear infinite;
+}
+
+.pipe-flow-slow {
+  stroke-dasharray: 8, 6;
+  animation: dash 2s linear infinite;
+}
+
+/* Glowing Pulsing SCADA LEDs */
+@keyframes scada-glow-green {
+  0%, 100% {
+    box-shadow: 0 0 5px #16a34a, 0 0 12px rgba(22, 163, 74, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 2px #16a34a, 0 0 6px rgba(22, 163, 74, 0.3);
+  }
+}
+
+@keyframes scada-glow-red {
+  0%, 100% {
+    box-shadow: 0 0 8px #dc2626, 0 0 16px rgba(220, 38, 38, 0.8);
+  }
+  50% {
+    box-shadow: 0 0 3px #dc2626, 0 0 8px rgba(220, 38, 38, 0.4);
+  }
+}
+
+@keyframes scada-glow-amber {
+  0%, 100% {
+    box-shadow: 0 0 6px #f59e0b, 0 0 14px rgba(245, 158, 11, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 2px #f59e0b, 0 0 6px rgba(245, 158, 11, 0.3);
+  }
+}
+
+.led-green {
+  animation: scada-glow-green 1.8s infinite ease-in-out;
+}
+.led-red {
+  animation: scada-glow-red 1s infinite ease-in-out;
+}
+.led-amber {
+  animation: scada-glow-amber 1.4s infinite ease-in-out;
+}
+
+/* Tank Wave Liquid Effect */
+@keyframes wave {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(-25%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-wave {
+  animation: wave 4s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+}
